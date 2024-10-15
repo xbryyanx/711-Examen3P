@@ -53,3 +53,4 @@ jobs:
               run: terraform -chdir=env/dev fmt
             - name: Terraform destroy
               run: terraform -chdir=env/dev destroy --auto-approve           
+              
