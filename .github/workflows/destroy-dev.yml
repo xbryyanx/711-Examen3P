@@ -1,11 +1,7 @@
-name: Deploy Dev Infrastructure
+name: Destroy Dev Infrastructure
 on:
-    push:
-        branches:
-            - main
-        paths:
-             - 'env/dev/**'
-             - 'modules/**'
+    workflow_dispatch: 
+
 permissions:
     id-token: write
     contents: read
@@ -29,7 +25,7 @@ env:
 
 
 jobs:
-    terraform-plan-apply:
+    terraform-destroy:
         runs-on: ubuntu-latest
         env:
             ARM_SKIP_PROVIDER_REGISTRATION: true
@@ -53,7 +49,5 @@ jobs:
               run: terraform -chdir=env/dev init
             - name: Terraform fmt
               run: terraform -chdir=env/dev fmt
-            - name: Terraform plan
-              run: terraform -chdir=env/dev plan
-            - name: Terraform apply
-              run: terraform -chdir=env/plan apply --auto-approve
+            - name: Terraform destroy
+              run: terraform -chdir=env/dev destroy --auto-approve
