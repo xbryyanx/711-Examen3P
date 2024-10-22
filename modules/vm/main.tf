@@ -94,7 +94,7 @@ resource "azurerm_network_interface" "IN_NIC" {
 
 }
 resource "azurerm_resource_group" "fernanda" {
-  name = fernanda
+  name = "fernanda"
   location = var.location
   
 }
